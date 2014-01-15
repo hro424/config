@@ -1,0 +1,8 @@
+[user]
+	name = Hiroo Ishikawa
+	email = hiroo.ishikawa@gmail.com
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
