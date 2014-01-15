@@ -4,8 +4,6 @@ alias ll='la -l'
 
 export PAGER=less
 export EDITOR=vim
-export http_proxy="http://proxy.mei.co.jp:8080"
-export https_proxy="http://proxy.mei.co.jp:8080"
 
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
 	source /usr/local/share/bash-completion/bash_completion.sh
