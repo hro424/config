@@ -5,11 +5,14 @@ alias ll='la -l'
 export PAGER=less
 export EDITOR=vim
 
-[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-	source /usr/local/share/bash-completion/bash_completion.sh
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  source `brew --prefix`/etc/bash_completion
+fi
+#[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+#	source /usr/local/share/bash-completion/bash_completion.sh
 
-source ~/.git-completion.bash
-source ~/.git-prompt.sh
+source ~/config/dot.git-completion.bash
+source ~/config/dot.git-prompt.sh
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]:-\)\[\e[0m\]; else echo \[\e[31m\]#-\(\[\e[0m\]; fi\`"\
