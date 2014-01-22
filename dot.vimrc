@@ -19,20 +19,21 @@ endif
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
-Bundle 'gmarik/vundle'
-Bundle 'bufexplorer.zip'
-Bundle 'cscope_macros.vim'
-Bundle 'localrc.vim'
-Bundle 'molokai'
-Bundle 'Solarized'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'cscope_macros.vim'
+NeoBundle 'Solarized'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nobackup		" do not keep a backup file, use versions instead
+set nobackup
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -102,24 +103,29 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-noremap j gj
-noremap k gk
-
 " No intro message
 set shm+=I
 
-" Character encoding
-set encoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+nnoremap j gj
+nnoremap k gk
+
+set cino=(0
+
+" Expand path
+cmap <c-x> <c-r>=expand('%:p:h')<cr>/
+
+set laststatus=2
+set statusline=%r\ [%{&ff}/%Y]%=\ ASCII=%03.3b(%02.2B)\ %04l,%04v\ %3.3p%%\
 
 " Reference line
 set colorcolumn=80
 hi ColorColumn ctermbg=DarkGrey guibg=DarkGrey
 
-" Expand path
-cmap <c-x> <c-r>=expand('%:p:h')<cr>/
+NeoBundleCheck
 
-set cino=(0
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
