@@ -19,15 +19,15 @@ endif
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/neobundle.vim/
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-Bundle 'gmarik/vundle'
-Bundle 'bufexplorer.zip'
-Bundle 'cscope_macros.vim'
-Bundle 'localrc.vim'
-Bundle 'molokai'
-Bundle 'Solarized'
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'cscope_macros.vim'
+NeoBundle 'localrc.vim'
+NeoBundle 'molokai'
+NeoBundle 'Solarized'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -121,5 +121,8 @@ cmap <c-x> <c-r>=expand('%:p:h')<cr>/
 
 set cino=(0
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
+"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+"set laststatus=2
+
+NeoBundleCheck
+
