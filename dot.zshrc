@@ -6,8 +6,9 @@
 # COMPLETION
 #
 
-autoload -U compinit
+autoload -U compinit promptinit
 compinit
+promptinit
 
 # w/ colors
 zstyle ':completion:*' list-colors ''
@@ -41,6 +42,14 @@ precmd() {
   psvar[1]="$vcs_info_msg_0_"
 }
 
+command_result() {
+  if [[ $? = 0 ]]; then
+    echo "%{${fg[yellow]}%}:-)%{${reset_color}%}"
+  else
+    echo "%{${fg[red]}%}#-(%{${reset_color}%}"
+  fi
+}
+
 case ${UID} in
   0)
     PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -49,11 +58,11 @@ case ${UID} in
       PROMPT="%{${fg[red]}%}${HOST%%.*} ${PROMPT}"
     ;;
   *)
-    PROMPT="%{${fg[magenta]}%}[%?]%{${reset_color}%} %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
+    PROMPT="$(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
     RPROMPT="%{${fg[yellow]}%}%1v%{${reset_color}%}"
     PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-    PROMPT="%{${fg_bold[magenta]}%}${PROMPT}"
+    PROMPT="%m $(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
     ;;
 esac
 
@@ -84,6 +93,7 @@ setopt nolistbeep
 setopt noautoremoveslash
 setopt complete_aliases
 setopt nonomatch
+setopt extendedglob
 
 #
 # ALIASES
@@ -96,6 +106,8 @@ alias ll="ls -al"
 alias du="du -h"
 alias df="df -h"
 
+alias vi="vim"
+
 #
 # ENVIRONMENT VARIABLES
 #
@@ -103,29 +115,12 @@ alias df="df -h"
 export CONCURRENCY_LEVEL=8
 export EDITOR=/usr/bin/vim
 export MINICOM='-c on'
-export GIT_PROXY_COMMAND=~/.git-proxy.sh
 export GREP_OPTIONS="--color --exclude-dir=.svn --exclude-dir=.git"
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/bin/ti-sdk-am335x-evm/linux-devkit/sysroots/i686-arago-linux/usr/bin
-export PATH=$PATH:~/bin/depot_tools
-export PATH=$PATH:~/bin/android-sdk-linux/platform-tools
-export PATH=$PATH:~/bin/android-sdk-linux/tools
-export PATH=$PATH:~/bin/android-ndk-r8c
-export PATH=$PATH:~/.local/bin
-
-export CPPUTEST_HOME=/usr/share/cpputest
 
 #
-# GIT COMPLETION
+# ArchLinux Specific
 #
-
-autoload bashcompinit
-bashcompinit
-source ~/.git-completion.sh
-
-#
-# Powerline
-#
-#source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # vim:sw=2:
+
