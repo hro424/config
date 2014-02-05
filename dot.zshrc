@@ -16,6 +16,9 @@ zstyle ':completion:*' list-colors ''
 # case insensitive
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
+# GIT completion
+zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
+
 #
 # PROMPT
 #
