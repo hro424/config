@@ -6,7 +6,7 @@
 # COMPLETION
 #
 
-autoload -U compinit promptinit
+autoload -Uz compinit promptinit
 compinit
 promptinit
 
