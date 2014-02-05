@@ -62,7 +62,7 @@ case ${UID} in
     RPROMPT="%{${fg[yellow]}%}%1v%{${reset_color}%}"
     PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-    PROMPT="%m $(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
+    PROMPT="$(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
     ;;
 esac
 
@@ -98,29 +98,26 @@ setopt extendedglob
 #
 # ALIASES
 #
-
-alias ls="ls -F --color"
-alias la="ls -a"
-alias ll="ls -al"
-
-alias du="du -h"
-alias df="df -h"
-
-alias vi="vim"
+config="$HOME/config/`uname`.alias.sh"
+if [ -r $config ]; then
+  . $config
+fi
 
 #
 # ENVIRONMENT VARIABLES
 #
-
-export CONCURRENCY_LEVEL=8
-export EDITOR=/usr/bin/vim
-export MINICOM='-c on'
-export GREP_OPTIONS="--color --exclude-dir=.svn --exclude-dir=.git"
+config="$HOME/config/`uname`.env.sh"
+if [ -r $config ]; then
+  . $config
+fi
 
 #
-# ArchLinux Specific
+# LOCAL SETTINGS
 #
-source /usr/share/doc/pkgfile/command-not-found.zsh
+config="$HOME/.local.zshrc"
+if [ -r $config ]; then
+  . $config
+fi
 
 # vim:sw=2:
 
