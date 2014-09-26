@@ -45,14 +45,6 @@ precmd() {
   psvar[1]="$vcs_info_msg_0_"
 }
 
-command_result() {
-  if [[ $? = 0 ]]; then
-    echo "%{${fg[yellow]}%}:-)%{${reset_color}%}"
-  else
-    echo "%{${fg[red]}%}#-(%{${reset_color}%}"
-  fi
-}
-
 case ${UID} in
   0)
     PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -61,11 +53,11 @@ case ${UID} in
       PROMPT="%{${fg[red]}%}${HOST%%.*} ${PROMPT}"
     ;;
   *)
-    PROMPT="$(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
+    PROMPT="%(?.%{${fg[yellow]}%}:-)%{${reset_color}%}.%{${fg[red]}%}#-(%{${reset_color}%}) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
     RPROMPT="%{${fg[yellow]}%}%1v%{${reset_color}%}"
     PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-    PROMPT="$(command_result) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
+    PROMPT="%(?.%{${fg[yellow]}%}:-)%{${reset_color}%}.%{${fg[red]}%}#-(%{${reset_color}%}) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
     ;;
 esac
 
