@@ -5,3 +5,8 @@
 	ci = commit
 [push]
 	default = simple
+[color]
+	ui = auto
+[user]
+	name = Hiroo Ishikawa
+	email = hiroo.ishikawa@gmail.com
