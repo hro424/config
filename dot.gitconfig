@@ -1,8 +1,18 @@
+[user]
+	email =
+	name = Hiroo Ishikawa
+
 [alias]
-	st = status
 	co = checkout
 	br = branch
 	ci = commit
+	st = status
+	unstage = reset HEAD --
+
+[color]
+	ui = auto
+	preloadindex = true
+
 [push]
 	default = simple
 [color]

@@ -112,6 +112,7 @@ nnoremap j gj
 nnoremap k gk
 
 set cino=(0
+let loaded_matchparen = 1
 
 " Expand path
 cmap <c-x> <c-r>=expand('%:p:h')<cr>/
