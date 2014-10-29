@@ -1,7 +1,3 @@
-[user]
-	email =
-	name = Hiroo Ishikawa
-
 [alias]
 	co = checkout
 	br = branch
@@ -15,3 +11,7 @@
 
 [push]
 	default = simple
+
+[user]
+	name = Hiroo Ishikawa
+	email = hiroo.ishikawa@gmail.com

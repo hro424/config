@@ -66,7 +66,7 @@ set vb t_vb=
 colorscheme Tomorrow-Night-Bright
 
 " Initial window size
-win 161 55
+win 161 60
 
 " Reference line
 hi ColorColumn guibg=DarkGrey
