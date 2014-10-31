@@ -59,11 +59,11 @@ if version >= 500
 endif
 
 set guioptions=
-set guifont=Source\ Code\ Pro\ 11
+set guifont=Source\ Code\ Pro\ 10
 set vb t_vb=
 
 " Color scheme
-colorscheme molokai
+colorscheme Tomorrow-Night-Bright
 
 " Initial window size
 win 161 60

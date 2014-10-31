@@ -21,18 +21,21 @@ filetype off
 
 if has('vim_starting')
   set rtp+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'bufexplorer.zip'
 NeoBundle 'cscope_macros.vim'
 NeoBundle 'localrc.vim'
 NeoBundle 'molokai'
 NeoBundle 'Solarized'
-NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'Wombat'
+NeoBundle 'w0ng/vim-hybrid'
+
+call neobundle#end()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -114,7 +117,8 @@ nnoremap j gj
 nnoremap k gk
 
 set cino=(0
-let loaded_matchparen = 1
+
+let loaded_matchparen=1
 
 " Expand path
 cmap <c-x> <c-r>=expand('%:p:h')<cr>/
@@ -124,7 +128,7 @@ set statusline=%r\ [%{&ff}/%Y]%=\ ASCII=%03.3b(%02.2B)\ %04l,%04v\ %3.3p%%\
 
 " Reference line
 set colorcolumn=80
-hi ColorColumn ctermbg=DarkGrey guibg=DarkGrey
+hi ColorColumn ctermbg=LightGrey guibg=DarkGrey
 
 NeoBundleCheck
 
