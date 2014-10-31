@@ -31,6 +31,8 @@ NeoBundle 'cscope_macros.vim'
 NeoBundle 'localrc.vim'
 NeoBundle 'molokai'
 NeoBundle 'Solarized'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
