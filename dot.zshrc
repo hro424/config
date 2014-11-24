@@ -2,7 +2,32 @@
 # .zshrc
 #
 
+##############################################################################
+# KEY BINDING
 #
+
+# Emacs mode
+bindkey -e
+
+#
+# OPTIONS
+#
+
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt ignore_eof
+setopt no_flow_control
+setopt list_packed
+setopt nolistbeep
+setopt noautoremoveslash
+setopt complete_aliases
+setopt nonomatch
+setopt extendedglob
+# Let it understand escape sequence
+setopt prompt_subst
+
+##############################################################################
 # COMPLETION
 #
 
@@ -17,22 +42,25 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # GIT completion
-zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
+zstyle ':completion:*:*:git:*' script ~/config/git-completion.zsh
 
-#
+# Menu selection
+zstyle ':completion:*:default' menu select=2
+
+##############################################################################
 # PROMPT
 #
 
 autoload colors
 colors
 
-# Let it understand escape sequence
-setopt prompt_subst
-
 # VCS info
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '-'
 zstyle ':vcs_info:*' formats '[%b]%u%c'
-#zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '[%b|%a]%u%c'
 
 preexec() {
   print -Pn "\e]0;$1:%-5~\a"
@@ -45,23 +73,28 @@ precmd() {
   psvar[1]="$vcs_info_msg_0_"
 }
 
+PR_SMILEY='%(?.%F{yellow}:-)%f.%F{red}#-()%f'
+PR_CURRENT='%F{green}[%~]%f'
+
 case ${UID} in
+  # Super user
   0)
-    PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
+    PROMPT="%B%F{red}%/#%f%b "
+    PROMPT2="%B%F{red}%_#%f%b "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-      PROMPT="%{${fg[red]}%}${HOST%%.*} ${PROMPT}"
+      PROMPT="%F{red}${HOST%%.*} ${PROMPT}"
     ;;
+  # Normal user
   *)
-    PROMPT="%(?.%{${fg[yellow]}%}:-)%{${reset_color}%}.%{${fg[red]}%}#-(%{${reset_color}%}) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
-    RPROMPT="%{${fg[yellow]}%}%1v%{${reset_color}%}"
-    PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
+    PROMPT="$PR_SMILEY %* $PR_CURRENT"$'\n'"%m%B%%%b "
+    RPROMPT="%F{yellow}%1v%f"
+    PROMPT2="%F{green}%_%%%f "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-    PROMPT="%(?.%{${fg[yellow]}%}:-)%{${reset_color}%}.%{${fg[red]}%}#-(%{${reset_color}%}) %* %{${fg[green]}%}[%~]%{${reset_color}%}"$'\n'"%m%B%%%b "
+    PROMPT="$PR_SMILEY %* $PR_CURRENT"$'\n'"%m%B%%%b "
     ;;
 esac
 
-#
+##############################################################################
 # COMMAND HISTORY
 #
 
@@ -71,26 +104,7 @@ SAVEHIST=10000
 setopt hist_ignore_dups
 setopt extended_history;
 
-#
-# KEY BINDING
-#
-
-# Emacs mode
-bindkey -e
-
-#
-# OPTIONS
-#
-
-setopt auto_cd
-setopt list_packed
-setopt nolistbeep
-setopt noautoremoveslash
-setopt complete_aliases
-setopt nonomatch
-setopt extendedglob
-
-#
+##############################################################################
 # ALIASES
 #
 config="$HOME/config/`uname`.alias.sh"
@@ -98,7 +112,7 @@ if [ -r $config ]; then
   . $config
 fi
 
-#
+##############################################################################
 # ENVIRONMENT VARIABLES
 #
 config="$HOME/config/`uname`.env.sh"
@@ -106,13 +120,17 @@ if [ -r $config ]; then
   . $config
 fi
 
-#
+##############################################################################
 # LOCAL SETTINGS
 #
 config="$HOME/.local.zshrc"
 if [ -r $config ]; then
   . $config
 fi
+
+function zman() {
+  PAGER="less -g -s '+/^ {7}"$1"'" man zshall
+}
 
 # vim:sw=2:
 
