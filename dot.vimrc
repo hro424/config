@@ -34,6 +34,8 @@ NeoBundle 'Solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'Wombat'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'CCTree'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 
@@ -115,6 +117,12 @@ set shm+=I
 
 nnoremap j gj
 nnoremap k gk
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
+nnoremap <silent><C-t>n :tabnew<CR>
+nnoremap <silent><C-t>c :tabc<CR>
+nnoremap <silent><C-t>j :tabn<CR>
+nnoremap <silent><C-t>k :tabp<CR>
+nmap <Esc><Esc> :noh<CR><Esc>
 
 set cino=(0
 
