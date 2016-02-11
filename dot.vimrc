@@ -24,16 +24,32 @@ if has('vim_starting')
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'bufexplorer.zip'
-NeoBundle 'cscope_macros.vim'
-NeoBundle 'localrc.vim'
+
+" colorschems
 NeoBundle 'molokai'
 NeoBundle 'Solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'Wombat'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle '29decibel/codeschool-vim-theme'
+
+" tools
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'cscope_macros.vim'
+NeoBundle 'localrc.vim'
+NeoBundle 'lambdalisue/vim-unified-diff'
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'Mark'
+
+" syntax
+NeoBundle 'rust-lang/rust.vim'
 
 call neobundle#end()
 
@@ -66,6 +82,7 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  nnoremap <Esc><Esc> :noh<Return>
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -110,6 +127,8 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+set diffexpr=unified_diff#diffexpr()
+
 " No intro message
 set shm+=I
 
@@ -124,7 +143,7 @@ let loaded_matchparen=1
 cmap <c-x> <c-r>=expand('%:p:h')<cr>/
 
 set laststatus=2
-set statusline=%r\ [%{&ff}/%Y]%=\ ASCII=%03.3b(%02.2B)\ %04l,%04v\ %3.3p%%\
+"set statusline=%r\ [%{&ff}/%Y]%=\ ASCII=%03.3b(%02.2B)\ %04l,%04v\ %3.3p%%\
 
 " Reference line
 set colorcolumn=80

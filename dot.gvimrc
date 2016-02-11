@@ -16,7 +16,7 @@
 " set the X11 font to use
 " set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
 
-set ch=2		" Make command line two lines high
+set ch=1		" Make command line two lines high
 
 set mousehide		" Hide the mouse when typing text
 
@@ -58,15 +58,31 @@ if version >= 500
 
 endif
 
+" let g:lightline = {
+" 	\ 'active': {
+" 	\   'right': [['lineinfo', 'syntastic'],
+" 	\	      ['percent'],
+" 	\	      ['fileformat', 'fileencoding', 'filetype']
+" 	\ },
+" 	\ 'component_function': {
+" 	\   'syntastic': 'SyntasticStatuslineFlag'
+" 	\ }
+" 	\ }
+
+map <C-n> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
 set guioptions=
-set guifont=Source\ Code\ Pro\ 10
+set anti
+set guifont=Rounded_Mgen+_1mn_regular:h11
 set vb t_vb=
-
-" Color scheme
-colorscheme Tomorrow-Night-Bright
-
-" Initial window size
-win 161 60
 
 " Reference line
 hi ColorColumn guibg=DarkGrey
+
+" Color scheme
+colorscheme Tomorrow-Night-Bright
+source $HOME/.vim/bundle/Mark/plugin/mark.vim
+
+" Initial window size
+win 161 50
