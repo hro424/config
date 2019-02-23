@@ -19,40 +19,23 @@ endif
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set rtp+=~/.vim/bundle/neobundle.vim/
-endif
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" colorschems
-NeoBundle 'molokai'
-NeoBundle 'Solarized'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'Wombat'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle '29decibel/codeschool-vim-theme'
+Plugin 'VundleVim/Vundle.vim'
 
 " tools
-NeoBundle 'bufexplorer.zip'
-NeoBundle 'cscope_macros.vim'
-NeoBundle 'localrc.vim'
-NeoBundle 'lambdalisue/vim-unified-diff'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'CCTree'
-NeoBundle 'Mark'
+Plugin 'bufexplorer.zip'
+Plugin 'cscope_macros.vim'
+Plugin 'localrc.vim'
+Plugin 'lambdalisue/vim-unified-diff'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'Mark'
+Plugin 'tagbar'
+Plugin 'itchyny/lightline.vim'
+Plugin 'dracula/vim'
 
-" syntax
-NeoBundle 'rust-lang/rust.vim'
-
-call neobundle#end()
+call vundle#end()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -135,7 +118,6 @@ set shm+=I
 
 nnoremap j gj
 nnoremap k gk
-nnoremap <silent><C-n> :NERDTreeToggle<CR>
 nnoremap <silent><C-t>n :tabnew<CR>
 nnoremap <silent><C-t>c :tabc<CR>
 nnoremap <silent><C-t>j :tabn<CR>
@@ -155,8 +137,6 @@ set laststatus=2
 " Reference line
 set colorcolumn=80
 hi ColorColumn ctermbg=LightGrey guibg=DarkGrey
-
-NeoBundleCheck
 
 set encoding=utf-8
 set termencoding=utf-8

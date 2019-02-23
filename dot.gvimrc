@@ -69,20 +69,27 @@ endif
 " 	\ }
 " 	\ }
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-s> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 set guioptions=
 set anti
-set guifont=Rounded_Mgen+_1mn_regular:h11
+"set guifont=Rounded_Mgen+_1mn_regular:h10
+set guifont=Monaco:h10
 set vb t_vb=
 
 " Reference line
 hi ColorColumn guibg=DarkGrey
 
 " Color scheme
-colorscheme Tomorrow-Night-Bright
-source $HOME/.vim/bundle/Mark/plugin/mark.vim
+colorscheme dracula
 
 " Initial window size
-win 161 50
+win 191 60
+
+if has('gui_macvim')
+  set imdisable
+  set transparency=10
+endif
+
+" vim:set et sw=2 ts=2:
