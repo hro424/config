@@ -1,0 +1,117 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
+" Buffer explorer
+Plugin 'bufexplorer.zip'
+
+" Cscope macro
+Plugin 'cscope_macros.vim'
+
+" Local setting file
+Plugin 'localrc.vim'
+
+" Trailing white space
+Plugin 'bronson/vim-trailing-whitespace'
+
+" Tag bar
+Plugin 'tagbar'
+
+" Fancy status line
+Plugin 'itchyny/lightline.vim'
+
+" Easy cursor motion
+Plugin 'easymotion/vim-easymotion'
+
+" File explorer
+Plugin 'scrooloose/nerdtree'
+
+" Multiple highlights
+"Plugin 'inkarkat/vim-mark'
+
+" Color schmes
+Plugin 'w0ng/vim-hybrid'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'reedes/vim-colors-pencil'
+
+call vundle#end()
+filetype plugin indent on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nobackup
+set noswapfile
+set showcmd
+set showmatch
+set ambiwidth=double
+set wildmenu
+set diffopt=internal,filler,algorithm:histogram,indent-heuristic
+
+" Encodings/Formats
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,sjis,euc-jp,iso-2022-jp
+set fileformats=unix,dos,mac
+
+" Tab/Space settings
+set et
+set sw=4
+set ts=4
+
+" Indent
+set autoindent
+set cino=(0
+set smartindent
+
+" Display settings
+set laststatus=2
+set showtabline=2
+set ruler
+set shm+=I
+set colorcolumn=80
+hi ColorColumn ctermbg=LightGrey guibg=DarkGrey
+
+" Search settings
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Cursor settings
+set backspace=indent,eol,start
+set cursorline
+set whichwrap=b,s,h,l
+
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+autocmd BufWritePre * :FixWhitespace
+
+syntax on
+
+" Keymap
+let mapleader = "\<Space>"
+nnoremap <Esc><Esc> :noh<Return>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Leader>w :w<CR>
+nnoremap <C-S-n> :tabnext<CR>
+nnoremap <C-S-p> :tabprevious<CR>
+map Q gq
+cmap <C-x> <C-r>=expand('%:p:h')<CR>/
+
+" Plugin settings
+map <C-s> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+" vim:set et sw=2 ts=2:
