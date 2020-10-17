@@ -9,6 +9,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'tpope/vim-markdown'
+
 " Buffer explorer
 Plugin 'bufexplorer.zip'
 
@@ -31,15 +33,23 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'easymotion/vim-easymotion'
 
 " File explorer
-Plugin 'scrooloose/nerdtree'
+"Plugin 'preservim/nerdtree'
 
 " Multiple highlights
 "Plugin 'inkarkat/vim-mark'
+
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 " Color schmes
 Plugin 'w0ng/vim-hybrid'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'reedes/vim-colors-pencil'
+Plugin 'udalov/kotlin-vim'
+Plugin 'haishanh/night-owl.vim'
+Plugin 'sheerun/vim-wombat-scheme'
 
 call vundle#end()
 filetype plugin indent on
@@ -105,13 +115,16 @@ nnoremap <Esc><Esc> :noh<Return>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Leader>w :w<CR>
-nnoremap <C-S-n> :tabnext<CR>
-nnoremap <C-S-p> :tabprevious<CR>
+"nnoremap <C-n> :tabnext<CR>
+"nnoremap <C-p> :tabprevious<CR>
 map Q gq
 cmap <C-x> <C-r>=expand('%:p:h')<CR>/
 
 " Plugin settings
-map <C-s> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+"map <C-s> :NERDTreeToggle<CR>
+"nmap <F8> :TagbarToggle<CR>
+
+" ChangeLog settings
+let g:changelog_username='Hiroo Ishikawa <hiroo.ishikawa@gmail.com>'
 
 " vim:set et sw=2 ts=2:

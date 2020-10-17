@@ -1,6 +1,6 @@
 set anti
 set guioptions=
-set guifont=Noto\ Mono\ 9
+set guifont=Noto\ Mono\ 11
 set mousehide		" Hide the mouse when typing text
 set vb t_vb=
 
@@ -11,7 +11,7 @@ hi ColorColumn guibg=DarkGrey
 colorscheme pencil
 
 " Initial window size
-win 101 45
+win 121 60
 
 if has('gui_macvim')
   set imdisable
