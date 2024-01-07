@@ -1,57 +1,59 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+packadd vim-jetpack
+call jetpack#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+Jetpack 'tani/vim-jetpack', {'opt': 1}
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+Jetpack 'tpope/vim-fugitive'
 
-Plugin 'tpope/vim-markdown'
+Jetpack 'tpope/vim-markdown'
 
 " Buffer explorer
-Plugin 'bufexplorer.zip'
+Jetpack 'jlanzarotta/bufexplorer'
 
 " Cscope macro
-Plugin 'cscope_macros.vim'
-
-" Local setting file
-Plugin 'localrc.vim'
+"Jetpack 'cscope_macros.vim'
 
 " Trailing white space
-Plugin 'bronson/vim-trailing-whitespace'
+Jetpack 'bronson/vim-trailing-whitespace'
 
 " Tag bar
-Plugin 'tagbar'
+Jetpack 'preservim/tagbar'
 
 " Fancy status line
-Plugin 'itchyny/lightline.vim'
+Jetpack 'vim-airline/vim-airline'
+Jetpack 'vim-airline/vim-airline-themes'
 
 " Easy cursor motion
-Plugin 'easymotion/vim-easymotion'
+Jetpack 'easymotion/vim-easymotion'
 
 " File explorer
-"Plugin 'preservim/nerdtree'
+Jetpack 'preservim/nerdtree'
 
 " Multiple highlights
-"Plugin 'inkarkat/vim-mark'
+"Jetpack 'inkarkat/vim-mark'
 
-Plugin 'editorconfig/editorconfig-vim'
+Jetpack 'editorconfig/editorconfig-vim'
 
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
+" Session management
+"Jetpack 'xolox/vim-misc'
+"Jetpack 'xolox/vim-session'
+
+" Alignment
+Jetpack 'junegunn/vim-easy-align'
 
 " Color schmes
-Plugin 'w0ng/vim-hybrid'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'udalov/kotlin-vim'
-Plugin 'haishanh/night-owl.vim'
-Plugin 'sheerun/vim-wombat-scheme'
+Jetpack 'w0ng/vim-hybrid'
+Jetpack 'NLKNguyen/papercolor-theme'
+Jetpack 'reedes/vim-colors-pencil'
+Jetpack 'udalov/kotlin-vim'
+Jetpack 'haishanh/night-owl.vim'
+Jetpack 'sheerun/vim-wombat-scheme'
 
-call vundle#end()
+call jetpack#end()
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,7 +99,7 @@ set hlsearch
 
 " Cursor settings
 set backspace=indent,eol,start
-set cursorline
+"set cursorline
 set whichwrap=b,s,h,l
 
 autocmd BufReadPost *
@@ -121,10 +123,12 @@ map Q gq
 cmap <C-x> <C-r>=expand('%:p:h')<CR>/
 
 " Plugin settings
-"map <C-s> :NERDTreeToggle<CR>
+map <C-h> :NERDTreeToggle<CR>
 "nmap <F8> :TagbarToggle<CR>
 
 " ChangeLog settings
 let g:changelog_username='Hiroo Ishikawa <hiroo.ishikawa@gmail.com>'
 
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " vim:set et sw=2 ts=2:
